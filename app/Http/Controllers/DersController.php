@@ -7,27 +7,21 @@ class DersController extends Controller
 {
     public function program()
     {
-
         $gunler = ['Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma'];
-        $ders = array('0' => 'Matematik', 'Türkçe', 'Coğrafya', 'İngilizce', 'Fen', 'Sosyal',  'Din',  'Felsefe');
-        $derslerin_sayisi = [4, 5, 2, 3, 4, 3, 2, 2];
+        $ders = array('Matematik'=>4, 'Türkçe'=>5, 'Coğrafya'=>2, 'İngilizce'=>3, 'Fen'=>4, 'Sosyal'=>3,  'Din'=>2,  'Felsefe'=>2);
         $gunde_kac_ders = 5;
         $uc_ders_mi = false;
         $slice = 0;
-        $siniflar = [
-            '0' =>  $dokuzA = array(),
-            '1' => $dokuzB = array(),
-        ];
-
-       //do {        
+        $siniflar = [ $dokuzA = array(), $dokuzB = array()];
+    
             foreach ($siniflar as $siniflarkey => $siniflarvalue) {
                 $slice = 0;
                 $count=0;
                 $dersler = array();
                 //dersler dizisine ekliyorum o hafta hangi dersten kaç tane varsa 
                 foreach ($ders as $derskey => $dersvalue) {
-                    for ($ekle = 0; $ekle < $derslerin_sayisi[$derskey]; $ekle++) {
-                        array_push($dersler, $ders[$derskey]);
+                    for ($ekle = 0; $ekle < $dersvalue; $ekle++) {
+                        array_push($dersler, $derskey);
                     }
                 }
                 // her gün için 5 ders ekliyorum
@@ -52,7 +46,6 @@ class DersController extends Controller
             // bir ders aynı saatte diğer sınıfta da var mı kontrol ediliyor
             $count = count(array_intersect_assoc($siniflar[0], $siniflar[1]));
             if ($count > 0) {echo "<br>".$count . " eşleşen var. <br>";} else {echo $count . "eşit";}
-       // } while ( $uc_ders_mi==true);
 
         $dokuzATotal = array_chunk($siniflar[0],  $gunde_kac_ders);
         $dokuzBTotal = array_chunk($siniflar[1],  $gunde_kac_ders);
