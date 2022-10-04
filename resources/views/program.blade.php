@@ -9,8 +9,8 @@
   <div class="container">
     <div class="row">
       <h1>9-A</h1>
-@php($i=0)
-@foreach ($dokuzATotal as $item ) <hr> {{$gunler[$i]}} <br> @php($i++)
+
+@foreach ($dokuzATotal as $key => $item ) <hr> {{$gunler[$key]}} <br>
 
 @foreach($item as $key => $value) {{ $key+1 . " - " . $value}}  <br> @endforeach
 
@@ -23,8 +23,8 @@
 <div class="container">
   <div class="row">
     <h1>9-B</h1>
-@php($i=0)
-@foreach ($dokuzBTotal as $item ) <hr> {{$gunler[$i]}} <br> @php($i++)
+
+@foreach ($dokuzBTotal as $key => $item ) <hr>  {{$gunler[$key]}}  <br> 
 
 @foreach($item as $key => $value) {{ $key+1 . " - " . $value}}  <br> @endforeach
 
